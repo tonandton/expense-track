@@ -5,7 +5,7 @@ import { MainLayout } from "./styles/Layout";
 
 function App() {
   return (
-    <AppStyled bg={bg} className="App">
+    <AppStyled $bg={bg} className="App">
       <Orb />
       <MainLayout></MainLayout>
     </AppStyled>
@@ -14,7 +14,7 @@ function App() {
 
 const AppStyled = styled.div`
   height: 100vh;
-  /* background-image: url(${(props) => props.bg}); */
+  /* background-image: url(${(props) => props.$bg}); */
   position: relative;
 `;
 
