@@ -4,7 +4,7 @@ import profile from "../../img/profile.png";
 import { menuItems } from "../../utils/menuItems";
 import { GoSignOut } from "react-icons/go";
 
-function Navigation() {
+function Navigation({ active, setActive }) {
   return (
     <NavStyled>
       <div className="user-con">
@@ -18,8 +18,12 @@ function Navigation() {
       <ul className="menu-items">
         {menuItems.map((item) => {
           return (
-            <li key={item.id}>
-              {item.icon}
+            <li
+              key={item.id}
+              onClick={() => setActive(item.id)}
+              className={active === item.id ? "active" : ""}
+            >
+              <i>{item.icon}</i>
               <span>{item.title}</span>
             </li>
           );
@@ -27,7 +31,10 @@ function Navigation() {
       </ul>
       <div className="bottom-nav">
         <li>
-          <GoSignOut /> Sign Out
+          <i>
+            <GoSignOut />
+          </i>{" "}
+          Sign Out
         </li>
       </div>
     </NavStyled>
@@ -74,9 +81,45 @@ const NavStyled = styled.nav`
     flex: 1;
     display: flex;
     flex-direction: column;
+
     li {
       display: grid;
       grid-template-columns: 40px auto;
+      margin: 0.6rem 0;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.4s ease-in-out;
+      color: rgba(34, 34, 96, rgba(0, 0, 0, 0.06));
+      padding-left: 1rem;
+      position: relative;
+
+      i {
+        color: rgba(34, 34, 96, 0.6);
+        font-size: 1.4rem;
+        transition: all 0.4s ease-in-out;
+      }
+      &:hover {
+        color: rgba(34, 34, 96, 1);
+      }
+    }
+  }
+
+  .active {
+    color: rgba(34, 34, 96, 1) !important;
+
+    i {
+      color: rgba(34, 34, 96, 1) !important;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: #222602;
+      border-radius: 0 10px 10px 0;
     }
   }
 `;
