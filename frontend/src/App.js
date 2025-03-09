@@ -7,9 +7,12 @@ import { useMemo, useState } from "react";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Income from "./Components/Income/Income";
 import Expense from "./Components/Expense/Expense";
+import { useGlobalContext } from "./context/globalContext";
 
 function App() {
   const [active, setActive] = useState(1);
+
+  const global = useGlobalContext();
 
   const displayData = () => {
     switch (active) {
