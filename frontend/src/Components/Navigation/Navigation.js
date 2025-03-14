@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import profile from "../../img/profile.png";
 import { menuItems } from "../../utils/menuItems";
-import { GoSignOut } from "react-icons/go";
 
 function Navigation({ active, setActive }) {
   return (
@@ -31,10 +30,7 @@ function Navigation({ active, setActive }) {
       </ul>
       <div className="bottom-nav">
         <li>
-          <i>
-            <GoSignOut />
-          </i>{" "}
-          Sign Out
+          <i></i> Sign Out
         </li>
       </div>
     </NavStyled>

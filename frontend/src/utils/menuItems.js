@@ -1,29 +1,28 @@
-import { GrTransaction, GrDashboard } from "react-icons/gr";
-import { MdOutlineTrendingUp, MdTrendingDown } from "react-icons/md";
+import { dashboard, expenses, transactions, trend } from "../utils/Icons";
 
 export const menuItems = [
   {
     id: 1,
     title: "Dashboard",
-    icon: <GrDashboard />,
+    icon: dashboard,
     link: "/dashboard",
   },
   {
     id: 2,
     title: "View Transactions",
-    icon: <GrTransaction />,
+    icon: transactions,
     link: "/dashboard",
   },
   {
     id: 3,
     title: "Incomes",
-    icon: <MdOutlineTrendingUp />,
+    icon: trend,
     link: "/dashboard",
   },
   {
     id: 4,
-    title: "Expense",
-    icon: <MdTrendingDown />,
+    title: "Expenses",
+    icon: expenses,
     link: "/dashboard",
   },
 ];
