@@ -27,7 +27,7 @@ function Income() {
       <InnerLayout>
         <h2>Incomes</h2>
         <h2 className="total-income">
-          Total Income: <span>${totalIncome()}</span>
+          Total Income: <span>{totalIncome()}</span>
         </h2>
         <div className="income-content">
           <div className="form-container">
@@ -47,6 +47,7 @@ function Income() {
                   date={date}
                   category={category}
                   indicatorColor="var(--color-green)"
+                  type={type}
                   deleteItem={handleDelete}
                 />
               );

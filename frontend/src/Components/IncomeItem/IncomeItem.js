@@ -22,6 +22,7 @@ import {
   users,
   yt,
 } from "../../utils/Icons";
+import { dateFormat, formatTHB } from "../../utils/Format";
 
 function IncomeItem({
   id,
@@ -89,11 +90,9 @@ function IncomeItem({
         <h5>{title}</h5>
         <div className="inner-content">
           <div className="text">
+            <p>{formatTHB(amount)}</p>
             <p>
-              {dollar} {amount}
-            </p>
-            <p>
-              {calender} {date}
+              {calender} {dateFormat(date)}
             </p>
             <p>
               {comment}

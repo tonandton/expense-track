@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
+import { formatTHB } from "../utils/Format";
 
 const BASE_URL = "http://localhost:5000/api/v1/";
 
@@ -36,7 +37,7 @@ export const GlobalProvider = ({ children }) => {
       totalIncome = totalIncome + income.amount;
     });
 
-    return totalIncome;
+    return formatTHB(totalIncome);
   };
 
   const addExpense = async (expense) => {
@@ -65,7 +66,7 @@ export const GlobalProvider = ({ children }) => {
       totalExpense = totalExpense + expense.amount;
     });
 
-    return totalExpense;
+    return formatTHB(totalExpense);
   };
 
   return (
