@@ -6,7 +6,7 @@ import { useGlobalContext } from "../../context/globalContext";
 import Button from "../Button/Button";
 
 function Form() {
-  const { addIncome } = useGlobalContext();
+  const { addIncome, getIncomes } = useGlobalContext();
 
   const [inputState, setInputState] = useState({
     title: "",
@@ -25,6 +25,7 @@ function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
     addIncome(inputState);
+    getIncomes();
   };
 
   return (
@@ -41,7 +42,7 @@ function Form() {
       <div className="input-control">
         <input
           value={amount}
-          type="text"
+          type="number"
           name={"amount"}
           placeholder={"Salary Amount"}
           onChange={handleInput("amount")}
