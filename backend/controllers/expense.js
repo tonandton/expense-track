@@ -1,9 +1,9 @@
-const IncomeSchema = require("../models/IncomeModel");
+const ExpenseSchema = require("../models/ExpenseModel");
 
 exports.addExpense = async (req, res) => {
   const { title, amount, category, description, date } = req.body;
 
-  const income = IncomeSchema({
+  const expense = ExpenseSchema({
     title,
     amount,
     category,
@@ -20,18 +20,18 @@ exports.addExpense = async (req, res) => {
         .status(400)
         .json({ meesage: "Amount must be a positive number!" });
     }
-    await income.save();
-    res.status(200).json({ message: "Income Added " });
+    await expense.save();
+    res.status(200).json({ message: "Expense Added " });
   } catch (err) {
     res.status(500).json({ message: "Server Error" });
   }
 
-  console.log(income);
+  console.log(expense);
 };
 
 exports.getExpenses = async (req, res) => {
   try {
-    const incomes = await IncomeSchema.find().sort({ createdAt: -1 });
+    const incomes = await ExpenseSchema.find().sort({ createdAt: -1 });
     res.status(200).json(incomes);
   } catch (err) {
     res.status(500).json({ message: "Server Error" });
@@ -40,9 +40,9 @@ exports.getExpenses = async (req, res) => {
 
 exports.deleteExpense = async (req, res) => {
   const { id } = req.params;
-  IncomeSchema.findByIdAndDelete(id)
-    .then((income) => {
-      res.status(200).json({ message: "Income Deleted" });
+  ExpenseSchema.findByIdAndDelete(id)
+    .then((expense) => {
+      res.status(200).json({ message: "Expense Deleted" });
     })
     .catch((err) => {
       res.status(500).json({ message: "Server Error" });

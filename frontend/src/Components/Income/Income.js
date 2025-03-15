@@ -6,7 +6,8 @@ import Form from "../Form/Form";
 import IncomeItem from "../IncomeItem/IncomeItem";
 
 function Income() {
-  const { addIncome, incomes, getIncomes, deleteIncome } = useGlobalContext();
+  const { addIncome, incomes, getIncomes, deleteIncome, totalIncome } =
+    useGlobalContext();
 
   const handleDelete = (id) => {
     const isConfirmed = window.confirm(
@@ -25,6 +26,9 @@ function Income() {
     <IncomeStyled>
       <InnerLayout>
         <h2>Incomes</h2>
+        <h2 className="total-income">
+          Total Income: <span>${totalIncome()}</span>
+        </h2>
         <div className="income-content">
           <div className="form-container">
             <Form />
@@ -57,6 +61,7 @@ function Income() {
 const IncomeStyled = styled.div`
   display: flex;
   overflow: auto;
+
   .total-income {
     display: flex;
     justify-content: center;
@@ -69,6 +74,7 @@ const IncomeStyled = styled.div`
     margin: 1rem 0;
     font-size: 2rem;
     gap: 0.5rem;
+
     span {
       font-size: 2.5rem;
       font-weight: 800;

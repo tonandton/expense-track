@@ -26,6 +26,14 @@ function Form() {
     e.preventDefault();
     addIncome(inputState);
     getIncomes();
+
+    setInputState({
+      title: "",
+      amount: "",
+      date: null,
+      category: "",
+      description: "",
+    });
   };
 
   return (
