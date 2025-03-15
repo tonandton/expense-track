@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { InnerLayout } from "../../styles/Layout";
 import { useGlobalContext } from "../../context/globalContext";
-import Form from "../Form/Form";
+import ExpenseForm from "./ExpenseForm";
 import IncomeItem from "../IncomeItem/IncomeItem";
 
 function Expense() {
@@ -31,7 +31,7 @@ function Expense() {
         </h2>
         <div className="expense-content">
           <div className="form-container">
-            <Form />
+            <ExpenseForm />
           </div>
           <div className="expense">
             {expenses.map((expense) => {
