@@ -39,7 +39,7 @@ function IncomeItem({
     switch (category) {
       case "salary":
         return money;
-      case "freelancing":
+      case "education":
         return freelance;
       case "investments":
         return stocks;

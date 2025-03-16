@@ -31,13 +31,12 @@ export const GlobalProvider = ({ children }) => {
     getIncomes();
   };
 
-  const totalIncome = () => {
-    let totalIncome = 0;
-    incomes.forEach((income) => {
-      totalIncome = totalIncome + income.amount;
-    });
+  const numericTotalIncome = () => {
+    return incomes.reduce((total, income) => total + income.amount, 0);
+  };
 
-    return formatTHB(totalIncome);
+  const totalIncome = () => {
+    return formatTHB(numericTotalIncome());
   };
 
   const addExpense = async (expense) => {
@@ -60,13 +59,25 @@ export const GlobalProvider = ({ children }) => {
     getExpenses();
   };
 
+  const numericTotalExpense = () => {
+    return expenses.reduce((total, expense) => total + expense.amount, 0);
+  };
+
   const totalExpense = () => {
-    let totalExpense = 0;
-    expenses.forEach((expense) => {
-      totalExpense = totalExpense + expense.amount;
+    return formatTHB(numericTotalExpense());
+  };
+
+  const totalBalance = () => {
+    return formatTHB(numericTotalIncome() - numericTotalExpense());
+  };
+
+  const transactionHistory = () => {
+    const history = [...incomes, ...expenses];
+    history.sort((a, b) => {
+      return new Date(b.createdAt) - new Date(a.createdAt);
     });
 
-    return formatTHB(totalExpense);
+    return history;
   };
 
   return (
@@ -82,6 +93,8 @@ export const GlobalProvider = ({ children }) => {
         expenses,
         deleteExpense,
         totalExpense,
+        totalBalance,
+        transactionHistory,
       }}
     >
       {children}

@@ -46,6 +46,7 @@ function Expense() {
                   amount={amount}
                   date={date}
                   category={category}
+                  type={type}
                   indicatorColor="var(--color-green)"
                   deleteItem={handleDelete}
                 />
